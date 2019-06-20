@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # codeigniter-3.2.1-with-admin-LTE-Template-Intigration
 ## Admin LTE templete with php codeigniter 3.2.1 latest version intigration
 
@@ -36,3 +37,6 @@ Once you logged in with System Administrator account, you can create user or edi
 | Bootstrap | 3.3.7 | [Website](http://getbootstrap.com) | [Github](https://github.com/twbs/bootstrap)
 | jQuery | 2.2.4 | [Website](http://jquery.com) | [Github](https://github.com/jquery/jquery)
 | Font Awesome | 4.6.3 | [Website](http://fortawesome.github.io/Font-Awesome/) | [Github](https://github.com/FortAwesome/Font-Awesome)
+=======
+# ndi_complain
+>>>>>>> 65290da3f8494bc08d73595a2ca3e6c228295e80
