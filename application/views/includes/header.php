@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title><?php echo $pageTitle; ?></title>
+    <title>Nothing</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.4 -->
     <link href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />    
@@ -58,15 +58,15 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="<?php echo base_url(); ?>assets/dist/img/avatar.png" class="user-image" alt="User Image"/>
-                  <span class="hidden-xs"><?php echo $name; ?></span>
+                  <span class="hidden-xs"><?php echo 'name'; ?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
                     <img src="<?php echo base_url(); ?>assets/dist/img/avatar.png" class="img-circle" alt="User Image" />
                     <p>
-                      <?php echo $name; ?>
-                      <small><?php echo $role_text; ?></small>
+                      <?php echo 'name'; ?>
+                      <small><?php echo 'role_text'; ?></small>
                     </p>
                   </li>
                   <!-- Menu Footer-->
@@ -128,10 +128,6 @@
                 <span>My Tasks</span>
               </a>
             </li>
-            <?php
-            if($role == ROLE_ADMIN || $role == ROLE_MANAGER)
-            {
-            ?>
             <li class="treeview">
               <a href="#" >
                 <i class="fa fa-thumb-tack"></i>
@@ -144,11 +140,6 @@
                 <span>Task Uploads</span>
               </a>
             </li>
-            <?php
-            }
-            if($role == ROLE_ADMIN)
-            {
-            ?>
             <li class="treeview">
               <a href="<?php echo base_url(); ?>userListing">
                 <i class="fa fa-users"></i>
@@ -161,9 +152,6 @@
                 <span>Reports</span>
               </a>
             </li>
-            <?php
-            }
-            ?>
           </ul>
         </section>
         <!-- /.sidebar -->

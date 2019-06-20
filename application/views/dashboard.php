@@ -1,55 +1,59 @@
+<pre>
+<?php  var_dump($_POST); ?>
+</pre>
 <div class="content-wrapper">
   <div class="container">
       <h2>Complaint</h2>
-      <form>
+      <form action="" method="POST">
         <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-4 col-form-label text-right">ชื่อผู้ร้องเรียน</label>
+          <label  class="col-sm-4 col-form-label text-right">ชื่อผู้ร้องเรียน<span class="text-red">*</span></label>
           <div class="col-sm-4">
-            <input type="text" name="cpName" class="form-control" id="inputEmail3" placeholder="">
+            <input type="text" name="name" class="form-control" requireder>
           </div>
         </div>
         <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-4 col-form-label text-right">เลขที่บัตรประชาชน</label>
+          <label  class="col-sm-4 col-form-label text-right">เลขที่บัตรประชาชน<span class="text-red">*</span></label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" id="inputEmail3" placeholder="">
+            <input type="text" name="nat_id" class="form-control" pattern=".{13,13}" maxlength="13" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" requireder title="เลขที่บัตรประชาชน 13 หลัก">
           </div>
         </div>
         <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-4 col-form-label text-right">เบอร์โทรศัพท์</label>
+          <label  class="col-sm-4 col-form-label text-right">เบอร์โทรศัพท์<span class="text-red">*</span></label>
           <div class="col-sm-4">
-            <input type="email" class="form-control" id="inputEmail3" placeholder="">
+            <input type="text" name="tel" class="form-control" maxlength="10" requireder>
           </div>
         </div>
         <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-4 col-form-label text-right">Email</label>
+          <label  class="col-sm-4 col-form-label text-right">Email</label>
           <div class="col-sm-4">
-            <input type="email" class="form-control" id="inputEmail3" placeholder="">
+            <input type="email" name="email" class="form-control">
           </div>
         </div>
         <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-4 col-form-label text-right">สถานที่ติดต่อกลับ</label>
+          <label  class="col-sm-4 col-form-label text-right">สถานที่ติดต่อกลับ<span class="text-red">*</span></label>
           <div class="col-sm-4">
-            <textarea class="form-control" ></textarea>
+            <textarea name="addr" class="form-control" ></textarea>
           </div>
         </div>
         <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-4 col-form-label text-right">ประเภทการร้องเรียน</label>
+          <label  class="col-sm-4 col-form-label text-right">ประเภทการร้องเรียน<span class="text-red">*</span></label>
           <div class="col-sm-4">
-            <select name="" id="" class="form-control">
+            <select name="cp_type_id" id="" class="form-control" requireder>
                 <option value="">เลือกประเภท</option>
+                <option value="1">ทดสอบ</option>
             </select>
           </div>
         </div>
         <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-4 col-form-label text-right">รายละเอียดการร้องเรียน</label>
+          <label  class="col-sm-4 col-form-label text-right">รายละเอียดการร้องเรียน<span class="text-red">*</span></label>
           <div class="col-sm-4">
-            <textarea class="form-control" ></textarea>
+            <textarea name="cp_detail" class="form-control" requireder></textarea>
           </div>
         </div>
         <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-4 col-form-label text-right">เอกสารแนบ</label>
+          <label  class="col-sm-4 col-form-label text-right">เอกสารแนบ</label>
           <div class="col-sm-4">
-          <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#exampleModal">
+          <button type="button" id="popup" class="btn btn-success btn-block" data-toggle="modal" data-target="#exampleModal">
             เพิ่มเอกสาร
           </button>
 
@@ -64,23 +68,23 @@
                 </div>
                 <div class="modal-body">
                     เลือกไฟล์
-                    <input type="file" id="files" name="files[]" multiple  class="form-control"/>                    
+                    <div id="filepick"></div>             
                     คำอธิบาย
-                    <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
+                    <div id="filedetail"></div> 
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิดหน้าต่าง</button>
-                  <button type="button" class="btn btn-primary" data-dismiss="modal">อัพโหลดไฟล์</button>
+                  <button type="button" id="dismiss" class="btn btn-secondary" data-dismiss="modal">ปิดหน้าต่าง</button>
+                  <button type="button" id="upload" class="btn btn-primary" data-dismiss="modal">อัพโหลดไฟล์</button>
                 </div>
               </div>
             </div>
           </div>
-            
-            <div class="gallery"></div>
+            <div class="store"></div>
+            <table class="table table-bordered " id="gallery"></table>
           </div>
         </div>
         <div class="form-group row"><br>
-          <label for="inputEmail3" class="col-sm-4 col-form-label text-right"></label>
+          <label  class="col-sm-4 col-form-label text-right"></label>
           <div class="col-sm-4">
               <button type="submit" class="btn btn-primary btn-block">บันทึก</button>
           </div>
@@ -89,30 +93,54 @@
   </div>
 </div>
 <script>
-$(document).ready(function() {
-  $('#files').on('change', function() { $(".modal-body").append('<input type="file" name="file[]"/>') });
-  if (window.File && window.FileList && window.FileReader) {
-    $("#files").on("change", function(e) {
-      var files = e.target.files,
-        filesLength = files.length;
-      for (var i = 0; i < filesLength; i++) {
-        var f = files[i]
-        var fileReader = new FileReader();
-        fileReader.onload = (function(e) {
-          var file = e.target;
-          $("<span id=\"pip\" class=\"thumbnail\">" +
-            "<img src=\"" + e.target.result + "\" title=\"" + f.name + "\"/>" +
-            "<span class=\"remove\">ลบออก</span>" +
-            "</span>").insertAfter(".gallery");
-          $(".remove").click(function(){
-            $(this).parent("#pip").remove();
-          });
-        });
-        fileReader.readAsDataURL(f);
+
+  var link = 0;
+  $('#popup').click(function(){
+      link++;
+        $('#filepick').children().hide();
+        $('#filedetail').children().hide();
+        //var slug = Math.random().toString(36).substring(7);
+        $('<input type="file" id="files" name="'+link+'[]" multiple onchange="previewFiles(\''+link+'\')"  class="form-control" />').appendTo('#filepick')
+        $('<textarea id="fileDetail" name="dt['+link+']"  cols="30" rows="10" class="form-control"></textarea>').appendTo('#filedetail')
+  });
+
+  $('#dismiss').click(function(){
+      $('input[name="'+link+'"]:visible').remove()
+      $('textarea[name="dt_'+link+'"]:visible').remove()
+  });
+  
+  function previewFiles(link) {
+    var preview = document.querySelector('#gallery');
+    var files   = document.querySelector('input[type=file]').files;
+    function readAndPreview(file) {
+      // Make sure `file.name` matches our extensions criteria
+      if ( /\.(jpe?g|png|gif)$/i.test(file.name) ) {
+        var reader = new FileReader();
+        reader.addEventListener("load", function () {
+          $('#gallery').empty();
+          var image = new Image();
+          image.height = 100;
+          image.title = file.name;
+          image.src = this.result;
+          $('#upload').click(function(){
+            detail = $('textarea[name="dt_'+link+'"]').value;
+            console.log($('textarea[name="dt_'+link+'"]'))
+            $('<tr><td id="pip">'+file.name+'</td><td>'+detail+'</td><td><i class="fa fa-times remove"></i></td></tr>').appendTo('#gallery');
+            $(".remove").click(function(){
+              //console.log($(this).context.parentNode.previousSibling.innerText)
+              $(this).closest('tr').remove();
+              $('input[name="'+link+'"]').remove()
+              $('textarea[name="dt_'+link+'"]').remove()
+            });
+          })
+        }, false);
+        reader.readAsDataURL(file);
       }
-    });
-  } else {
-    alert("Your browser doesn't support to File API")
+    }
+     
+    if (files) {
+      [].forEach.call(files, readAndPreview);
+    }
   }
-});
+
 </script>
