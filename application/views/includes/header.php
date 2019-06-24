@@ -112,20 +112,18 @@
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
             <li class="treeview">
-              <a href="<?php echo base_url(); ?>dashboard">
-                <i class="fa fa-dashboard"></i> <span>Dashboard</span></i>
+              <a href="<?php echo base_url(); ?>complain">
+                <i class="fa fa-dashboard"></i> <span>Complain Form</span></i>
               </a>
             </li>
             <li class="treeview">
-              <a href="#" >
-                <i class="fa fa-plane"></i>
-                <span>New Task</span>
+              <a href="<?php echo base_url(); ?>department" >
+                <i class="fa fa-plane"></i><span>Department</span>
               </a>
             </li>
             <li class="treeview">
-              <a href="#" >
-                <i class="fa fa-ticket"></i>
-                <span>My Tasks</span>
+              <a href="<?php echo base_url(); ?>category" >
+                <i class="fa fa-ticket"></i><span>Category</span>
               </a>
             </li>
             <li class="treeview">

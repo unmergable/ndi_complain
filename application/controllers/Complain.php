@@ -9,24 +9,40 @@
         }
 
         public function insert(){
-            $this->complain_model->insert();
+                $data = array();
+                $countfiles = count($_FILES['files']['name']);
+                for($i=0;$i<$countfiles;$i++){
+                    
+                    if(!empty($_FILES['files']['name'][$i])){
+                        
+                        // Define new $_FILES array - $_FILES['file']
+                        $_FILES['file']['name'] = $_FILES['files']['name'][$i];
+                        $_FILES['file']['type'] = $_FILES['files']['type'][$i];
+                        $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i];
+                        $_FILES['file']['error'] = $_FILES['files']['error'][$i];
+                        $_FILES['file']['size'] = $_FILES['files']['size'][$i];
 
-            //upload image
-            $config['upload_path'] = './assets/images/complain';
-            //$config['allowed_types'] = 'gif|jpg|png';
-            $config['max_size'] = '20480';
-            $config['max_width'] = '2500';
-            $config['max_height'] = '2500';
-            $this->load->library('upload', $config);
-            if (!$this->upload->do_upload()) {
-                $errors = array('error' => $this->upload->display_errors());
-                $cp_image = 'noimage.png';
-            }else{
-                $data = array('upload_data' => $this->upload->data());
-                $cp_image = $_FILES['userfile']['name'];
-            }
-            $this->complain_model->insert($cp_image);
-            redirect('/complain');
-        }
+                        // Set preference
+                        $config['upload_path'] = 'assets/images/complain/';	
+                        $config['allowed_types'] = 'jpg|jpeg|png|gif';
+                        $config['max_size']    = '5000';	// max_size in kb
+                        $config['file_name'] = $_FILES['files']['name'][$i];
+                            
+                        //Load upload library
+                        $this->load->library('upload',$config);			
+                        
+                        // File upload
+                        if($this->upload->do_upload('file')){
+                            // Get data about the file
+                            $uploadData = $this->upload->data();
+                            $filename = $uploadData['file_name'];
+
+                            // Initialize array
+                            $data['filenames'][] = $filename;
+                        }
+                    }     
+                }
+                // load view
+                $this->load->view('user_view',$data);
 
     }
