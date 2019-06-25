@@ -112,7 +112,12 @@
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
             <li class="treeview">
-              <a href="<?php echo base_url(); ?>complain">
+              <a href="<?php echo base_url(); ?>complain" >
+                <i class="fa fa-thumb-tack"></i><span>Complain List</span>
+              </a>
+            </li>
+            <li class="treeview">
+              <a href="<?php echo base_url(); ?>complain/insert">
                 <i class="fa fa-dashboard"></i> <span>Complain Form</span></i>
               </a>
             </li>
@@ -124,12 +129,6 @@
             <li class="treeview">
               <a href="<?php echo base_url(); ?>category" >
                 <i class="fa fa-ticket"></i><span>Category</span>
-              </a>
-            </li>
-            <li class="treeview">
-              <a href="#" >
-                <i class="fa fa-thumb-tack"></i>
-                <span>Task Status</span>
               </a>
             </li>
             <li class="treeview">

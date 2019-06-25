@@ -50,13 +50,8 @@
   }
 </style>
 <div class="content-wrapper">
-  <pre>
-    <?=var_dump($_POST)?>
-  </pre>
-  <form id="regForm" action="" method="POST">
-  <?php echo form_open_multipart('complain/insert')?>
+  <form id="regForm" action="<?=base_url()?>complain/insert" method="POST" enctype="multipart/form-data">
     <h1 class="text-center">Complain </h1>
-
     <div class="tab">
       <div class="form-group row">
         <label  class="col-sm-4 col-form-label text-right">ชื่อผู้ร้องเรียน<span class="text-red">*</span></label>
@@ -102,7 +97,7 @@
           <label  class="col-sm-4 col-form-label text-right">ประเภท<span class="text-red">*</span></label>
           <div class="col-sm-4 req">
             <select name="type" id="" class="form-control">
-              <option value="">เลือกประเภท</option>
+              <option value="1">เลือกประเภท</option>
             </select>
           </div>
         </div>
@@ -148,15 +143,22 @@
           <table class="table table-bordered " id="gallery"></table>
         </div>
       </div>
-      
-    </div>
 
-    <div style="overflow:auto;">
-      <div style="float:right;">
-        <button type="button" class="btn btn-secondary" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-        <button type="button" class="btn btn-primary" id="nextBtn" onclick="nextPrev(1)">Next</button>
+    </div>
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+        <div style="overflow:auto;">
+        <div style="float:right;">
+          <button type="button" class="btn btn-secondary" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+          <button type="button" class="btn btn-primary" id="nextBtn" onclick="nextPrev(1)">Next</button>
+        </div>
+      </div>
       </div>
     </div>
+      
+
+
 
       <!-- Circles which indicates the steps of the form: -->
     <div style="text-align:center;margin-top:40px;">
@@ -192,7 +194,7 @@
     var files   = document.querySelector('input[name="file_'+link+'[]"]').files;
     var detail = $('textarea[name="detail_'+link+'[]"]').val();
     function readAndPreview(file) {
-      if ( /\.(jpe?g|png|gif)$/i.test(file.name) ) {
+      if ( /\.(jpe?g|png|gif)$/i.test(file.name) || true) {
         var reader = new FileReader();
         reader.addEventListener("load", function () {
             $('<tr id="'+link+'"><td>'+file.name+'</td><td>'+detail+'</td><td><i class="fa fa-times remove"></i></td></tr>').appendTo('#gallery')

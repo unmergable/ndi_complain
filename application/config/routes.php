@@ -7,7 +7,7 @@ $route['404_override'] = 'error';
 /*********** USER DEFINED ROUTES *******************/
 
 $route['loginMe'] = 'login/loginMe';
-$route['dashboard'] = 'user';
+$route['dashboard'] = 'complain/index';
 $route['logout'] = 'user/logout';
 $route['userListing'] = 'user/userListing';
 $route['userListing/(:num)'] = "user/userListing/$1";

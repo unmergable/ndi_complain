@@ -5,19 +5,21 @@ class Complain_model extends CI_Model{
         $this->load->database();
     }
 
-    public function insert($cp_image){
+    public function insert(){
         $data = array(
-            'name' => ucfirst($this->input->post('name')),
+            'name' => $this->input->post('name'),
             'nat_id' => $this->input->post('nat_id'),
             'tel' => $this->input->post('tel'),
             'email' => $this->input->post('email'),
             'addr' => $this->input->post('addr'),
-            'addr' => $this->input->post('addr'),
-            'cp_type_id' => $this->input->post('cp_type_id'),
-            'cp_detail' => $this->input->post('cp_detail')
+            'cp_place' => $this->input->post('place'),
+            'cp_type_id' => $this->input->post('type'),
+            'cp_detail' => $this->input->post('detail')
         );
 
         $this->db->insert('complains', $data);
+        $insert_id = $this->db->insert_id();
+        return $insert_id;
     }
 
     public function getAll(){
