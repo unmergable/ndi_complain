@@ -23,8 +23,19 @@ class Complain_model extends CI_Model{
     }
 
     public function getAll(){
-        $this->db->order_by('id');
+        $this->db->order_by('created_at', 'DESC');
         $query = $this->db->get('complains');
         return $query->result_array();
+    }
+
+    public function get($id){
+        $this->db->where('complains.id', $id);
+        $complain = $this->db->get('complains');
+        $this->db->where('complain_files.complain_id', $id);
+        $files = $this->db->get('complain_files');
+        return array(
+            'complain' => $complain->result_array(),
+            'files' => $files->result_array()
+        );
     }
 }

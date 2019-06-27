@@ -56,7 +56,7 @@
       <div class="form-group row">
         <label  class="col-sm-4 col-form-label text-right">ชื่อผู้ร้องเรียน<span class="text-red">*</span></label>
         <div class="col-sm-4 req">
-          <input type="text" name="name" oninput="this.className = ''">
+          <input type="text" name="name" oninput="this.className = ''" required>
         </div>
       </div>
       <div class="form-group row">
@@ -194,7 +194,7 @@
     var files   = document.querySelector('input[name="file_'+link+'[]"]').files;
     var detail = $('textarea[name="detail_'+link+'[]"]').val();
     function readAndPreview(file) {
-      if ( /\.(jpe?g|png|gif)$/i.test(file.name) || true) {
+      if ( /\.(jpe?g|png|gif)$/i.test(file.name)) {
         var reader = new FileReader();
         reader.addEventListener("load", function () {
             $('<tr id="'+link+'"><td>'+file.name+'</td><td>'+detail+'</td><td><i class="fa fa-times remove"></i></td></tr>').appendTo('#gallery')

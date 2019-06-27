@@ -8,6 +8,15 @@
             $this->load->view('includes/footer');
         }
 
+        public function view($id){
+            $complain = $this->complain_model->get($id);
+            $data['complain'] = $complain;
+
+            $this->load->view('includes/header');
+            $this->load->view('complains/view', $data);
+            $this->load->view('includes/footer');
+        }
+
         public function insert(){
             $data = array();
             $this->load->helper(array('form', 'url'));
